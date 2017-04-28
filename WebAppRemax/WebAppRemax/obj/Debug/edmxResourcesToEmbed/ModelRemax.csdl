@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RemaxModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AgentLanguages">
+    <Key>
+      <PropertyRef Name="referEmployee" />
+      <PropertyRef Name="referLanguage" />
+    </Key>
+    <Property Name="referEmployee" Type="Int32" Nullable="false" />
+    <Property Name="referLanguage" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BuildingType">
+    <Key>
+      <PropertyRef Name="refBuildingType" />
+    </Key>
+    <Property Name="refBuildingType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Building" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Houses" Relationship="Self.FK_Houses_BuildingType" FromRole="BuildingType" ToRole="Houses" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="refClient" />
+    </Key>
+    <Property Name="refClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="referEmployee" Type="Int32" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Houses" Relationship="Self.FK_Houses_Clients" FromRole="Clients" ToRole="Houses" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="refEmployee" />
+    </Key>
+    <Property Name="refEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Houses" Relationship="Self.FK_Houses_Agent" FromRole="Employees" ToRole="Houses" />
+    <NavigationProperty Name="Messages" Relationship="Self.FK_Messages_ToEmployees" FromRole="Employees" ToRole="Messages" />
+  </EntityType>
+  <EntityType Name="Houses">
+    <Key>
+      <PropertyRef Name="refHouse" />
+    </Key>
+    <Property Name="refHouse" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="referBuildingType" Type="Int32" Nullable="false" />
+    <Property Name="referNumBedrooms" Type="Int32" Nullable="false" />
+    <Property Name="referNumParking" Type="Int32" Nullable="false" />
+    <Property Name="referPropertyType" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Double" Nullable="false" />
+    <Property Name="referEmployee" Type="Int32" Nullable="false" />
+    <Property Name="referClient" Type="Int32" Nullable="false" />
+    <Property Name="Pool" Type="Boolean" />
+    <Property Name="Waterfront" Type="Boolean" />
+    <Property Name="Elevator" Type="Boolean" />
+    <Property Name="Reduced_mobility" Type="Boolean" />
+    <Property Name="NetArea" Type="Int32" Nullable="false" />
+    <Property Name="YearBuilt" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BuildingType" Relationship="Self.FK_Houses_BuildingType" FromRole="Houses" ToRole="BuildingType" />
+    <NavigationProperty Name="Clients" Relationship="Self.FK_Houses_Clients" FromRole="Houses" ToRole="Clients" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Houses_Agent" FromRole="Houses" ToRole="Employees" />
+    <NavigationProperty Name="NumBedrooms" Relationship="Self.FK_Houses_NumBedrooms" FromRole="Houses" ToRole="NumBedrooms" />
+    <NavigationProperty Name="NumParking" Relationship="Self.FK_Houses_NumParking" FromRole="Houses" ToRole="NumParking" />
+    <NavigationProperty Name="PropertyType" Relationship="Self.FK_Houses_PropertyType" FromRole="Houses" ToRole="PropertyType" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Images_Houses" FromRole="Houses" ToRole="Images" />
+  </EntityType>
+  <EntityType Name="Images">
+    <Key>
+      <PropertyRef Name="referHouse" />
+      <PropertyRef Name="image" />
+    </Key>
+    <Property Name="referHouse" Type="Int32" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Houses" Relationship="Self.FK_Images_Houses" FromRole="Images" ToRole="Houses" />
+  </EntityType>
+  <EntityType Name="Languages">
+    <Key>
+      <PropertyRef Name="refLanguage" />
+    </Key>
+    <Property Name="refLanguage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="refMessage" />
+    </Key>
+    <Property Name="refMessage" Type="Int32" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="referAgent" Type="Int32" />
+    <Property Name="Date" Type="Time" Precision="7" />
+    <Property Name="SenderEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SenderPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Messages_ToEmployees" FromRole="Messages" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="NumBedrooms">
+    <Key>
+      <PropertyRef Name="refNumBedrooms" />
+    </Key>
+    <Property Name="refNumBedrooms" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bedrooms" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Number" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Houses" Relationship="Self.FK_Houses_NumBedrooms" FromRole="NumBedrooms" ToRole="Houses" />
+  </EntityType>
+  <EntityType Name="NumParking">
+    <Key>
+      <PropertyRef Name="refNumParking" />
+    </Key>
+    <Property Name="refNumParking" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Parking" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Houses" Relationship="Self.FK_Houses_NumParking" FromRole="NumParking" ToRole="Houses" />
+  </EntityType>
+  <EntityType Name="Photos">
+    <Key>
+      <PropertyRef Name="referAgent" />
+    </Key>
+    <Property Name="referAgent" Type="Int32" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropertyType">
+    <Key>
+      <PropertyRef Name="refPropertyType" />
+    </Key>
+    <Property Name="refPropertyType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Property" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Houses" Relationship="Self.FK_Houses_PropertyType" FromRole="PropertyType" ToRole="Houses" />
+  </EntityType>
+  <Association Name="FK_Houses_BuildingType">
+    <End Role="BuildingType" Type="Self.BuildingType" Multiplicity="1" />
+    <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BuildingType">
+        <PropertyRef Name="refBuildingType" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="referBuildingType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Houses_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="refClient" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="referClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Houses_Agent">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="refEmployee" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="referEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Messages_ToEmployees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="refEmployee" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="referAgent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Houses_NumBedrooms">
+    <End Role="NumBedrooms" Type="Self.NumBedrooms" Multiplicity="1" />
+    <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NumBedrooms">
+        <PropertyRef Name="refNumBedrooms" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="referNumBedrooms" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Houses_NumParking">
+    <End Role="NumParking" Type="Self.NumParking" Multiplicity="1" />
+    <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NumParking">
+        <PropertyRef Name="refNumParking" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="referNumParking" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Houses_PropertyType">
+    <End Role="PropertyType" Type="Self.PropertyType" Multiplicity="1" />
+    <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PropertyType">
+        <PropertyRef Name="refPropertyType" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="referPropertyType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Images_Houses">
+    <End Role="Houses" Type="Self.Houses" Multiplicity="1" />
+    <End Role="Images" Type="Self.Images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Houses">
+        <PropertyRef Name="refHouse" />
+      </Principal>
+      <Dependent Role="Images">
+        <PropertyRef Name="referHouse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RemaxEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AgentLanguages" EntityType="Self.AgentLanguages" />
+    <EntitySet Name="BuildingType" EntityType="Self.BuildingType" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" />
+    <EntitySet Name="Houses" EntityType="Self.Houses" />
+    <EntitySet Name="Images" EntityType="Self.Images" />
+    <EntitySet Name="Languages" EntityType="Self.Languages" />
+    <EntitySet Name="Messages" EntityType="Self.Messages" />
+    <EntitySet Name="NumBedrooms" EntityType="Self.NumBedrooms" />
+    <EntitySet Name="NumParking" EntityType="Self.NumParking" />
+    <EntitySet Name="Photos" EntityType="Self.Photos" />
+    <EntitySet Name="PropertyType" EntityType="Self.PropertyType" />
+    <AssociationSet Name="FK_Houses_BuildingType" Association="Self.FK_Houses_BuildingType">
+      <End Role="BuildingType" EntitySet="BuildingType" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Houses_Clients" Association="Self.FK_Houses_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Houses_Agent" Association="Self.FK_Houses_Agent">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Messages_ToEmployees" Association="Self.FK_Messages_ToEmployees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Houses_NumBedrooms" Association="Self.FK_Houses_NumBedrooms">
+      <End Role="NumBedrooms" EntitySet="NumBedrooms" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Houses_NumParking" Association="Self.FK_Houses_NumParking">
+      <End Role="NumParking" EntitySet="NumParking" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Houses_PropertyType" Association="Self.FK_Houses_PropertyType">
+      <End Role="PropertyType" EntitySet="PropertyType" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Images_Houses" Association="Self.FK_Images_Houses">
+      <End Role="Houses" EntitySet="Houses" />
+      <End Role="Images" EntitySet="Images" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

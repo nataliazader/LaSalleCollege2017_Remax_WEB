@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RemaxModelStoreContainer" CdmEntityContainer="RemaxEntities">
+    <EntitySetMapping Name="AgentLanguages">
+      <EntityTypeMapping TypeName="RemaxModel.AgentLanguages">
+        <MappingFragment StoreEntitySet="AgentLanguages">
+          <ScalarProperty Name="referEmployee" ColumnName="referEmployee" />
+          <ScalarProperty Name="referLanguage" ColumnName="referLanguage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BuildingType">
+      <EntityTypeMapping TypeName="RemaxModel.BuildingType">
+        <MappingFragment StoreEntitySet="BuildingType">
+          <ScalarProperty Name="refBuildingType" ColumnName="refBuildingType" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="RemaxModel.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="refClient" ColumnName="refClient" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="referEmployee" ColumnName="referEmployee" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="RemaxModel.Employees">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="refEmployee" ColumnName="refEmployee" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Houses">
+      <EntityTypeMapping TypeName="RemaxModel.Houses">
+        <MappingFragment StoreEntitySet="Houses">
+          <ScalarProperty Name="refHouse" ColumnName="refHouse" />
+          <ScalarProperty Name="referBuildingType" ColumnName="referBuildingType" />
+          <ScalarProperty Name="referNumBedrooms" ColumnName="referNumBedrooms" />
+          <ScalarProperty Name="referNumParking" ColumnName="referNumParking" />
+          <ScalarProperty Name="referPropertyType" ColumnName="referPropertyType" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="referEmployee" ColumnName="referEmployee" />
+          <ScalarProperty Name="referClient" ColumnName="referClient" />
+          <ScalarProperty Name="Pool" ColumnName="Pool" />
+          <ScalarProperty Name="Waterfront" ColumnName="Waterfront" />
+          <ScalarProperty Name="Elevator" ColumnName="Elevator" />
+          <ScalarProperty Name="Reduced_mobility" ColumnName="Reduced mobility" />
+          <ScalarProperty Name="NetArea" ColumnName="NetArea" />
+          <ScalarProperty Name="YearBuilt" ColumnName="YearBuilt" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="RemaxModel.Images">
+        <MappingFragment StoreEntitySet="Images">
+          <ScalarProperty Name="referHouse" ColumnName="referHouse" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages">
+      <EntityTypeMapping TypeName="RemaxModel.Languages">
+        <MappingFragment StoreEntitySet="Languages">
+          <ScalarProperty Name="refLanguage" ColumnName="refLanguage" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="RemaxModel.Messages">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="refMessage" ColumnName="refMessage" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="referAgent" ColumnName="referAgent" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="SenderEmail" ColumnName="SenderEmail" />
+          <ScalarProperty Name="SenderPhone" ColumnName="SenderPhone" />
+          <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NumBedrooms">
+      <EntityTypeMapping TypeName="RemaxModel.NumBedrooms">
+        <MappingFragment StoreEntitySet="NumBedrooms">
+          <ScalarProperty Name="refNumBedrooms" ColumnName="refNumBedrooms" />
+          <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NumParking">
+      <EntityTypeMapping TypeName="RemaxModel.NumParking">
+        <MappingFragment StoreEntitySet="NumParking">
+          <ScalarProperty Name="refNumParking" ColumnName="refNumParking" />
+          <ScalarProperty Name="Parking" ColumnName="Parking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Photos">
+      <EntityTypeMapping TypeName="RemaxModel.Photos">
+        <MappingFragment StoreEntitySet="Photos">
+          <ScalarProperty Name="referAgent" ColumnName="referAgent" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PropertyType">
+      <EntityTypeMapping TypeName="RemaxModel.PropertyType">
+        <MappingFragment StoreEntitySet="PropertyType">
+          <ScalarProperty Name="refPropertyType" ColumnName="refPropertyType" />
+          <ScalarProperty Name="Property" ColumnName="Property" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

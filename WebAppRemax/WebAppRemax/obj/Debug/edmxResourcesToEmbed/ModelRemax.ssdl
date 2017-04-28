@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RemaxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AgentLanguages">
+    <Key>
+      <PropertyRef Name="referEmployee" />
+      <PropertyRef Name="referLanguage" />
+    </Key>
+    <Property Name="referEmployee" Type="int" Nullable="false" />
+    <Property Name="referLanguage" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BuildingType">
+    <Key>
+      <PropertyRef Name="refBuildingType" />
+    </Key>
+    <Property Name="refBuildingType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Building" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="refClient" />
+    </Key>
+    <Property Name="refClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Comments" Type="text" />
+    <Property Name="referEmployee" Type="int" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="refEmployee" />
+    </Key>
+    <Property Name="refEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="char" MaxLength="10" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="Image" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Houses">
+    <Key>
+      <PropertyRef Name="refHouse" />
+    </Key>
+    <Property Name="refHouse" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="referBuildingType" Type="int" Nullable="false" />
+    <Property Name="referNumBedrooms" Type="int" Nullable="false" />
+    <Property Name="referNumParking" Type="int" Nullable="false" />
+    <Property Name="referPropertyType" Type="int" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="referEmployee" Type="int" Nullable="false" />
+    <Property Name="referClient" Type="int" Nullable="false" />
+    <Property Name="Pool" Type="bit" />
+    <Property Name="Waterfront" Type="bit" />
+    <Property Name="Elevator" Type="bit" />
+    <Property Name="Reduced mobility" Type="bit" />
+    <Property Name="NetArea" Type="int" Nullable="false" />
+    <Property Name="YearBuilt" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Images">
+    <Key>
+      <PropertyRef Name="referHouse" />
+      <PropertyRef Name="image" />
+    </Key>
+    <Property Name="referHouse" Type="int" Nullable="false" />
+    <Property Name="image" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Languages">
+    <Key>
+      <PropertyRef Name="refLanguage" />
+    </Key>
+    <Property Name="refLanguage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Language" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="refMessage" />
+    </Key>
+    <Property Name="refMessage" Type="int" Nullable="false" />
+    <Property Name="Message" Type="text" />
+    <Property Name="referAgent" Type="int" />
+    <Property Name="Date" Type="time" Precision="7" />
+    <Property Name="SenderEmail" Type="varchar" MaxLength="50" />
+    <Property Name="SenderPhone" Type="varchar" MaxLength="50" />
+    <Property Name="SenderName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NumBedrooms">
+    <Key>
+      <PropertyRef Name="refNumBedrooms" />
+    </Key>
+    <Property Name="refNumBedrooms" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Bedrooms" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Number" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NumParking">
+    <Key>
+      <PropertyRef Name="refNumParking" />
+    </Key>
+    <Property Name="refNumParking" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Parking" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Photos">
+    <Key>
+      <PropertyRef Name="referAgent" />
+    </Key>
+    <Property Name="referAgent" Type="int" Nullable="false" />
+    <Property Name="Photo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropertyType">
+    <Key>
+      <PropertyRef Name="refPropertyType" />
+    </Key>
+    <Property Name="refPropertyType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Property" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Houses_Agent">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="refEmployee" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="referEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Houses_BuildingType">
+    <End Role="BuildingType" Type="Self.BuildingType" Multiplicity="1" />
+    <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BuildingType">
+        <PropertyRef Name="refBuildingType" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="referBuildingType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Houses_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="refClient" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="referClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Houses_NumBedrooms">
+    <End Role="NumBedrooms" Type="Self.NumBedrooms" Multiplicity="1" />
+    <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NumBedrooms">
+        <PropertyRef Name="refNumBedrooms" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="referNumBedrooms" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Houses_NumParking">
+    <End Role="NumParking" Type="Self.NumParking" Multiplicity="1" />
+    <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NumParking">
+        <PropertyRef Name="refNumParking" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="referNumParking" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Houses_PropertyType">
+    <End Role="PropertyType" Type="Self.PropertyType" Multiplicity="1" />
+    <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PropertyType">
+        <PropertyRef Name="refPropertyType" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="referPropertyType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Images_Houses">
+    <End Role="Houses" Type="Self.Houses" Multiplicity="1" />
+    <End Role="Images" Type="Self.Images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Houses">
+        <PropertyRef Name="refHouse" />
+      </Principal>
+      <Dependent Role="Images">
+        <PropertyRef Name="referHouse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Messages_ToEmployees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="refEmployee" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="referAgent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RemaxModelStoreContainer">
+    <EntitySet Name="AgentLanguages" EntityType="Self.AgentLanguages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BuildingType" EntityType="Self.BuildingType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Houses" EntityType="Self.Houses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NumBedrooms" EntityType="Self.NumBedrooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NumParking" EntityType="Self.NumParking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyType" EntityType="Self.PropertyType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Houses_Agent" Association="Self.FK_Houses_Agent">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Houses_BuildingType" Association="Self.FK_Houses_BuildingType">
+      <End Role="BuildingType" EntitySet="BuildingType" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Houses_Clients" Association="Self.FK_Houses_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Houses_NumBedrooms" Association="Self.FK_Houses_NumBedrooms">
+      <End Role="NumBedrooms" EntitySet="NumBedrooms" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Houses_NumParking" Association="Self.FK_Houses_NumParking">
+      <End Role="NumParking" EntitySet="NumParking" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Houses_PropertyType" Association="Self.FK_Houses_PropertyType">
+      <End Role="PropertyType" EntitySet="PropertyType" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Images_Houses" Association="Self.FK_Images_Houses">
+      <End Role="Houses" EntitySet="Houses" />
+      <End Role="Images" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Messages_ToEmployees" Association="Self.FK_Messages_ToEmployees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

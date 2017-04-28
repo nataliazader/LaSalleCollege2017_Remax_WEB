@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c4e99c6d4cae455d98aa0f5d2838b86a" Name="Diagram1">
+        <EntityTypeShape EntityType="RemaxModel.AgentLanguages" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RemaxModel.BuildingType" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RemaxModel.Clients" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RemaxModel.Employees" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RemaxModel.Houses" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RemaxModel.Images" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RemaxModel.Languages" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RemaxModel.Messages" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RemaxModel.NumBedrooms" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RemaxModel.NumParking" Width="1.5" PointX="0.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RemaxModel.Photos" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RemaxModel.PropertyType" Width="1.5" PointX="0.75" PointY="18.625" IsExpanded="true" />
+        <AssociationConnector Association="RemaxModel.FK_Houses_BuildingType" ManuallyRouted="false" />
+        <AssociationConnector Association="RemaxModel.FK_Houses_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="RemaxModel.FK_Houses_Agent" ManuallyRouted="false" />
+        <AssociationConnector Association="RemaxModel.FK_Messages_ToEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="RemaxModel.FK_Houses_NumBedrooms" ManuallyRouted="false" />
+        <AssociationConnector Association="RemaxModel.FK_Houses_NumParking" ManuallyRouted="false" />
+        <AssociationConnector Association="RemaxModel.FK_Houses_PropertyType" ManuallyRouted="false" />
+        <AssociationConnector Association="RemaxModel.FK_Images_Houses" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
