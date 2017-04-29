@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="RemaxModelStoreContainer" CdmEntityContainer="RemaxEntities">
+  <EntityContainerMapping StorageEntityContainer="RemaxModelStoreContainer" CdmEntityContainer="REntities">
     <EntitySetMapping Name="AgentLanguages">
       <EntityTypeMapping TypeName="RemaxModel.AgentLanguages">
         <MappingFragment StoreEntitySet="AgentLanguages">
@@ -127,6 +127,28 @@
         <MappingFragment StoreEntitySet="PropertyType">
           <ScalarProperty Name="refPropertyType" ColumnName="refPropertyType" />
           <ScalarProperty Name="Property" ColumnName="Property" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewHouses">
+      <EntityTypeMapping TypeName="RemaxModel.ViewHouses">
+        <MappingFragment StoreEntitySet="ViewHouses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="NetArea" ColumnName="NetArea" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+          <ScalarProperty Name="Parking" ColumnName="Parking" />
+          <ScalarProperty Name="Property" ColumnName="Property" />
+          <ScalarProperty Name="Agent" ColumnName="Agent" />
+          <ScalarProperty Name="Seller" ColumnName="Seller" />
+          <ScalarProperty Name="Pool" ColumnName="Pool" />
+          <ScalarProperty Name="Water" ColumnName="Water" />
+          <ScalarProperty Name="Mobility" ColumnName="Mobility" />
+          <ScalarProperty Name="Elevator" ColumnName="Elevator" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

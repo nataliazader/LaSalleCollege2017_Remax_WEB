@@ -119,6 +119,38 @@
     <Property Name="refPropertyType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Property" Type="varchar" MaxLength="50" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'D:\LASALLECOLLEGE2017_REMAX_WEB\WEBAPPREMAX\WEBAPPREMAX\APP_DATA\REMAX.MDF.dbo.ViewHouses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewHouses">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Year" />
+      <PropertyRef Name="NetArea" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="Building" />
+      <PropertyRef Name="Bedrooms" />
+      <PropertyRef Name="Parking" />
+      <PropertyRef Name="Agent" />
+      <PropertyRef Name="Seller" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="NetArea" Type="int" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Building" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Bedrooms" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Parking" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Property" Type="varchar" MaxLength="50" />
+    <Property Name="Agent" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Seller" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pool" Type="bit" />
+    <Property Name="Water" Type="bit" />
+    <Property Name="Mobility" Type="bit" />
+    <Property Name="Elevator" Type="bit" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
   <Association Name="FK_Houses_Agent">
     <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
     <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
@@ -228,6 +260,26 @@
     <EntitySet Name="NumParking" EntityType="Self.NumParking" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PropertyType" EntityType="Self.PropertyType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ViewHouses" EntityType="Self.ViewHouses" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ViewHouses].[Id] AS [Id], 
+    [ViewHouses].[Name] AS [Name], 
+    [ViewHouses].[Year] AS [Year], 
+    [ViewHouses].[NetArea] AS [NetArea], 
+    [ViewHouses].[Price] AS [Price], 
+    [ViewHouses].[Building] AS [Building], 
+    [ViewHouses].[Bedrooms] AS [Bedrooms], 
+    [ViewHouses].[Parking] AS [Parking], 
+    [ViewHouses].[Property] AS [Property], 
+    [ViewHouses].[Agent] AS [Agent], 
+    [ViewHouses].[Seller] AS [Seller], 
+    [ViewHouses].[Pool] AS [Pool], 
+    [ViewHouses].[Water] AS [Water], 
+    [ViewHouses].[Mobility] AS [Mobility], 
+    [ViewHouses].[Elevator] AS [Elevator], 
+    [ViewHouses].[Description] AS [Description]
+    FROM [dbo].[ViewHouses] AS [ViewHouses]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_Houses_Agent" Association="Self.FK_Houses_Agent">
       <End Role="Employees" EntitySet="Employees" />
       <End Role="Houses" EntitySet="Houses" />

@@ -166,13 +166,13 @@ namespace WebAppRemax {
         protected global::System.Web.UI.WebControls.DropDownList ddlLowerNetArea;
         
         /// <summary>
-        /// ddlNetAreaUpper control.
+        /// ddlUpperNetArea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlNetAreaUpper;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUpperNetArea;
         
         /// <summary>
         /// lblYear control.
@@ -184,13 +184,22 @@ namespace WebAppRemax {
         protected global::System.Web.UI.WebControls.Label lblYear;
         
         /// <summary>
-        /// ddlYear control.
+        /// ddlLowerYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlYear;
+        protected global::System.Web.UI.WebControls.DropDownList ddlLowerYear;
+        
+        /// <summary>
+        /// ddlUpperYear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlUpperYear;
         
         /// <summary>
         /// lblKeyWords control.
@@ -218,5 +227,23 @@ namespace WebAppRemax {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFind;
+        
+        /// <summary>
+        /// grvResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grvResult;
+        
+        /// <summary>
+        /// lblResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResult;
     }
 }

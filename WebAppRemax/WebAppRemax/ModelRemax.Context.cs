@@ -13,10 +13,10 @@ namespace WebAppRemax
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RemaxEntities : DbContext
+    public partial class REntities : DbContext
     {
-        public RemaxEntities()
-            : base("name=RemaxEntities")
+        public REntities()
+            : base("name=REntities")
         {
         }
     
@@ -37,5 +37,6 @@ namespace WebAppRemax
         public virtual DbSet<NumParking> NumParking { get; set; }
         public virtual DbSet<Photos> Photos { get; set; }
         public virtual DbSet<PropertyType> PropertyType { get; set; }
+        public virtual DbSet<ViewHouses> ViewHouses { get; set; }
     }
 }

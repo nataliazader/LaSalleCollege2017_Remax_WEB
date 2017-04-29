@@ -124,6 +124,38 @@
           <Property Name="refPropertyType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Property" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'D:\LASALLECOLLEGE2017_REMAX_WEB\WEBAPPREMAX\WEBAPPREMAX\APP_DATA\REMAX.MDF.dbo.ViewHouses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewHouses">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="NetArea" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Building" />
+            <PropertyRef Name="Bedrooms" />
+            <PropertyRef Name="Parking" />
+            <PropertyRef Name="Agent" />
+            <PropertyRef Name="Seller" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="NetArea" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Building" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bedrooms" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Parking" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Property" Type="varchar" MaxLength="50" />
+          <Property Name="Agent" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Seller" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pool" Type="bit" />
+          <Property Name="Water" Type="bit" />
+          <Property Name="Mobility" Type="bit" />
+          <Property Name="Elevator" Type="bit" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
         <Association Name="FK_Houses_Agent">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
           <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
@@ -233,6 +265,26 @@
           <EntitySet Name="NumParking" EntityType="Self.NumParking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropertyType" EntityType="Self.PropertyType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewHouses" EntityType="Self.ViewHouses" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewHouses].[Id] AS [Id], 
+    [ViewHouses].[Name] AS [Name], 
+    [ViewHouses].[Year] AS [Year], 
+    [ViewHouses].[NetArea] AS [NetArea], 
+    [ViewHouses].[Price] AS [Price], 
+    [ViewHouses].[Building] AS [Building], 
+    [ViewHouses].[Bedrooms] AS [Bedrooms], 
+    [ViewHouses].[Parking] AS [Parking], 
+    [ViewHouses].[Property] AS [Property], 
+    [ViewHouses].[Agent] AS [Agent], 
+    [ViewHouses].[Seller] AS [Seller], 
+    [ViewHouses].[Pool] AS [Pool], 
+    [ViewHouses].[Water] AS [Water], 
+    [ViewHouses].[Mobility] AS [Mobility], 
+    [ViewHouses].[Elevator] AS [Elevator], 
+    [ViewHouses].[Description] AS [Description]
+    FROM [dbo].[ViewHouses] AS [ViewHouses]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Houses_Agent" Association="Self.FK_Houses_Agent">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Houses" EntitySet="Houses" />
@@ -406,6 +458,36 @@
           <Property Name="Property" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Houses" Relationship="Self.FK_Houses_PropertyType" FromRole="PropertyType" ToRole="Houses" />
         </EntityType>
+        <EntityType Name="ViewHouses">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="NetArea" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Building" />
+            <PropertyRef Name="Bedrooms" />
+            <PropertyRef Name="Parking" />
+            <PropertyRef Name="Agent" />
+            <PropertyRef Name="Seller" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="NetArea" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Building" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bedrooms" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Parking" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Property" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Agent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Seller" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pool" Type="Boolean" />
+          <Property Name="Water" Type="Boolean" />
+          <Property Name="Mobility" Type="Boolean" />
+          <Property Name="Elevator" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <Association Name="FK_Houses_BuildingType">
           <End Role="BuildingType" Type="Self.BuildingType" Multiplicity="1" />
           <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
@@ -502,7 +584,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RemaxEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="REntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AgentLanguages" EntityType="Self.AgentLanguages" />
           <EntitySet Name="BuildingType" EntityType="Self.BuildingType" />
           <EntitySet Name="Clients" EntityType="Self.Clients" />
@@ -515,6 +597,7 @@
           <EntitySet Name="NumParking" EntityType="Self.NumParking" />
           <EntitySet Name="Photos" EntityType="Self.Photos" />
           <EntitySet Name="PropertyType" EntityType="Self.PropertyType" />
+          <EntitySet Name="ViewHouses" EntityType="Self.ViewHouses" />
           <AssociationSet Name="FK_Houses_BuildingType" Association="Self.FK_Houses_BuildingType">
             <End Role="BuildingType" EntitySet="BuildingType" />
             <End Role="Houses" EntitySet="Houses" />
@@ -553,7 +636,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RemaxModelStoreContainer" CdmEntityContainer="RemaxEntities">
+        <EntityContainerMapping StorageEntityContainer="RemaxModelStoreContainer" CdmEntityContainer="REntities">
           <EntitySetMapping Name="AgentLanguages">
             <EntityTypeMapping TypeName="RemaxModel.AgentLanguages">
               <MappingFragment StoreEntitySet="AgentLanguages">
@@ -680,6 +763,28 @@
               <MappingFragment StoreEntitySet="PropertyType">
                 <ScalarProperty Name="refPropertyType" ColumnName="refPropertyType" />
                 <ScalarProperty Name="Property" ColumnName="Property" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewHouses">
+            <EntityTypeMapping TypeName="RemaxModel.ViewHouses">
+              <MappingFragment StoreEntitySet="ViewHouses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="NetArea" ColumnName="NetArea" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="Property" ColumnName="Property" />
+                <ScalarProperty Name="Agent" ColumnName="Agent" />
+                <ScalarProperty Name="Seller" ColumnName="Seller" />
+                <ScalarProperty Name="Pool" ColumnName="Pool" />
+                <ScalarProperty Name="Water" ColumnName="Water" />
+                <ScalarProperty Name="Mobility" ColumnName="Mobility" />
+                <ScalarProperty Name="Elevator" ColumnName="Elevator" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

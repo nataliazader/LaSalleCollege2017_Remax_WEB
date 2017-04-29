@@ -76,4 +76,3 @@ D:\LaSalleCollege2017_Remax_WEB\WebAppRemax\WebAppRemax\bin\Microsoft.Owin.Secur
 D:\LaSalleCollege2017_Remax_WEB\WebAppRemax\WebAppRemax\bin\Microsoft.Owin.Security.OAuth.xml
 D:\LaSalleCollege2017_Remax_WEB\WebAppRemax\WebAppRemax\obj\Debug\WebAppRemax.dll
 D:\LaSalleCollege2017_Remax_WEB\WebAppRemax\WebAppRemax\obj\Debug\WebAppRemax.pdb
-D:\LaSalleCollege2017_Remax_WEB\WebAppRemax\WebAppRemax\obj\Debug\WebAppRemax.csprojResolveAssemblyReference.cache

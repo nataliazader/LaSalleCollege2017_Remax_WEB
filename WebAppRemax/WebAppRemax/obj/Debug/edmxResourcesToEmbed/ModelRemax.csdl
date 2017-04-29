@@ -135,6 +135,36 @@
     <Property Name="Property" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Houses" Relationship="Self.FK_Houses_PropertyType" FromRole="PropertyType" ToRole="Houses" />
   </EntityType>
+  <EntityType Name="ViewHouses">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Year" />
+      <PropertyRef Name="NetArea" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="Building" />
+      <PropertyRef Name="Bedrooms" />
+      <PropertyRef Name="Parking" />
+      <PropertyRef Name="Agent" />
+      <PropertyRef Name="Seller" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="NetArea" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="Building" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Bedrooms" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Parking" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Property" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Agent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Seller" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pool" Type="Boolean" />
+    <Property Name="Water" Type="Boolean" />
+    <Property Name="Mobility" Type="Boolean" />
+    <Property Name="Elevator" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
   <Association Name="FK_Houses_BuildingType">
     <End Role="BuildingType" Type="Self.BuildingType" Multiplicity="1" />
     <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
@@ -231,7 +261,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="RemaxEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="REntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AgentLanguages" EntityType="Self.AgentLanguages" />
     <EntitySet Name="BuildingType" EntityType="Self.BuildingType" />
     <EntitySet Name="Clients" EntityType="Self.Clients" />
@@ -244,6 +274,7 @@
     <EntitySet Name="NumParking" EntityType="Self.NumParking" />
     <EntitySet Name="Photos" EntityType="Self.Photos" />
     <EntitySet Name="PropertyType" EntityType="Self.PropertyType" />
+    <EntitySet Name="ViewHouses" EntityType="Self.ViewHouses" />
     <AssociationSet Name="FK_Houses_BuildingType" Association="Self.FK_Houses_BuildingType">
       <End Role="BuildingType" EntitySet="BuildingType" />
       <End Role="Houses" EntitySet="Houses" />
