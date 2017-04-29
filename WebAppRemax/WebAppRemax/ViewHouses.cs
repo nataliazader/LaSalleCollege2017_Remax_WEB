@@ -30,5 +30,6 @@ namespace WebAppRemax
         public Nullable<bool> Mobility { get; set; }
         public Nullable<bool> Elevator { get; set; }
         public string Description { get; set; }
+        public string Address { get; set; }
     }
 }

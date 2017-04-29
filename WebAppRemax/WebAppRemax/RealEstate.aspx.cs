@@ -144,12 +144,16 @@ namespace WebAppRemax
                 where += " AND Name like '%"+ txtKeyWords.Text + "%' OR Description like '%" + txtKeyWords.Text + "%' OR  Address like '%" + txtKeyWords.Text + "%'";
 
 
-            string id = " ( ";
-            foreach (Houses house in dbRemax.Houses.SqlQuery("SELECT refHouse,referBuildingType,referNumBedrooms,referNumParking,referPropertyType,Price,referEmployee,referClient,Pool,Waterfront,Elevator,[Reduced mobility] as Reduced_mobility,NetArea,YearBuilt,Description,Name,Address FROM Houses " + where))
-                id += house.refHouse + ",";
+            //string id = " ( ";
+            //foreach (Houses house in dbRemax.Houses.SqlQuery("SELECT refHouse,referBuildingType,referNumBedrooms,referNumParking,referPropertyType,Price,referEmployee,referClient,Pool,Waterfront,Elevator,[Reduced mobility] as Reduced_mobility,NetArea,YearBuilt,Description,Name,Address FROM Houses " + where))
+            //    id += house.refHouse + ",";
 
-            id=id.TrimEnd(',');
-            id += ")";
+            //id=id.TrimEnd(',');
+            //id += ")";
+
+            List<string> id = new List<string>();
+            foreach (Houses house in dbRemax.Houses.SqlQuery("SELECT refHouse,referBuildingType,referNumBedrooms,referNumParking,referPropertyType,Price,referEmployee,referClient,Pool,Waterfront,Elevator,[Reduced mobility] as Reduced_mobility,NetArea,YearBuilt,Description,Name,Address FROM Houses " + where))
+                id.Add(house.refHouse.ToString());
             string info = "";
 
             var result = from h in dbRemax.ViewHouses
@@ -169,13 +173,15 @@ namespace WebAppRemax
                 info += (house.Water == true) ? "<p>Waterfront</p>" : "";
                 info += (house.Elevator == true) ? "<p>Elevator</p>" : "";
                 info += (house.Mobility == true) ? "<p>Reduced Mobility</p>" : "";
+                info += "<p> Address : " + house.Address + "</p>";
                 foreach (Images img in dbRemax.Images)
                     if (img.referHouse == house.Id)
                         info += "<img src='/Images/Houses/" + img.image.Trim() + ".jpg' width='50px'/>";
 
-                info += "<p style='margin-top:20px'><a class='btn btn-default' href='#'>Learn more &raquo;</a></p>";
+                info += "<p style='margin-top:20px'><a class='btn btn-default' href='#'>See details&raquo;</a></p>";
                 info += "</div>";
             }
+
             //grvResult.DataSource = result.ToList();
             //grvResult.DataBind();
 

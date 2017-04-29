@@ -26,6 +26,8 @@ namespace WebAppRemax
         protected void btnFind_Click(object sender, EventArgs e)
         {
             string where = " WHERE Role = 'Agent' ";
+            string whereLang =" WHERE 1=1 ";
+            string inRefEmp = "";
             if (txtCity.Text != "")
                 where += " AND  Address like '%" + txtCity.Text + "%'";
             if (radGender.SelectedValue == "f")
@@ -33,11 +35,33 @@ namespace WebAppRemax
             if (radGender.SelectedValue == "m")
                 where += " AND Gender = 'm'";
             if (cboLanguages.Items.Count > 0)
+            {
+                inRefEmp = " ( ";
                 foreach (ListItem item in cboLanguages.Items)
-                    where += "AND language = " + item.Value;
-            //grvResult.DataSource = dbRemax.Employees.ToList();
+                    if (item.Selected)
+                        whereLang += " AND referLanguage = " + item.Value;
+                foreach (AgentLanguages agent in dbRemax.AgentLanguages.SqlQuery("SELECT * FROM AgentLanguages " + whereLang))
+                    inRefEmp += agent.referEmployee + ",";
+                inRefEmp = inRefEmp.TrimEnd(',');
+                inRefEmp += " )";
+                where += " AND refEmployee IN " + inRefEmp;
+             }
+            string info = "";
+            foreach (Employees emp in dbRemax.Employees.SqlQuery("SELECT * FROM Employees " + where))
+            {
+                info += "<div class='col-md-4'><h2>" + emp.Name + "</h2>";
+                info += "<p> Phone : " + emp.Phone + "</p>";
+                info += "<p> Email : " + emp.Email + "</p>";
+                info += "<p> Adress : " + emp.Address+ "</p>";
+
+                info += "<p style='margin-top:20px'><a class='btn btn-default' href='#'>Send a message &raquo;</a></p>";
+                info += "</div>";
+            }
+
+            //grvResult.DataSource = dbRemax.Employees.SqlQuery("SELECT * FROM Employees " + where).ToList();
             //grvResult.DataBind();
-            lblWhere.Text = where;
+
+            lblResult.Text = info;
         }
     }
 }

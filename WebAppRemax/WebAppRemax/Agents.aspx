@@ -41,7 +41,8 @@
         </tr>
     </table>
         <asp:GridView ID="grvResult" runat="server"></asp:GridView>
-        <asp:Label ID="lblWhere" runat="server" Text="Label"></asp:Label>
-        <br />
-</div>
+        <div class="row">
+            <asp:Label ID="lblResult" runat="server" Text="Label"></asp:Label>
+         </div>    
+    </div>
 </asp:Content>
