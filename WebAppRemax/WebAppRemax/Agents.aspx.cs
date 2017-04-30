@@ -12,6 +12,7 @@ namespace WebAppRemax
         private static REntities dbRemax;
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblResult.Text = "";
             dbRemax = new REntities();
         }
 
@@ -49,12 +50,22 @@ namespace WebAppRemax
             string info = "";
             foreach (Employees emp in dbRemax.Employees.SqlQuery("SELECT * FROM Employees " + where))
             {
-                info += "<div class='col-md-4'><h2>" + emp.Name + "</h2>";
+                info += "<div class='col-md-4'>";
+
+                foreach (Photos photo in dbRemax.Photos)
+                    if (emp.refEmployee == photo.referAgent)
+                        info += "<p><img src='/Images/Agents/" + photo.Photo + ".jpg' style='width:200px'/></p>";
+
+                info += "<h2>" + emp.Name + "</h2>";
                 info += "<p> Phone : " + emp.Phone + "</p>";
                 info += "<p> Email : " + emp.Email + "</p>";
                 info += "<p> Adress : " + emp.Address+ "</p>";
-
-                info += "<p style='margin-top:20px'><a class='btn btn-default' href='#'>Send a message &raquo;</a></p>";
+                foreach(AgentLanguages alang in dbRemax.AgentLanguages)
+                    if(emp.refEmployee == alang.referEmployee)
+                        foreach(Languages lang in dbRemax.Languages)
+                            if(lang.refLanguage==alang.referLanguage)
+                                info += "<p>" + lang.Language + "</p>";
+                info += "<p style='margin-top:20px'><a class='btn btn-default' href='/Message?id="+emp.refEmployee+"'>Send a message &raquo;</a></p>";
                 info += "</div>";
             }
 

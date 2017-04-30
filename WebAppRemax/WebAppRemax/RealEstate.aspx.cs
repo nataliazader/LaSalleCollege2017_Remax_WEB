@@ -58,9 +58,9 @@ namespace WebAppRemax
                 ddlUpperYear.Items.Add(new ListItem("Upper Year", "-1"));
                 for (int year = 1800; year < DateTime.Now.Year + 10; year += 10)
                     ddlUpperYear.Items.Add(new ListItem(year.ToString(), year.ToString()));
-
-                
+                lblResult.Text = "";
             }
+            
         }
 
         protected void ddlLowerPrice_SelectedIndexChanged(object sender, EventArgs e)

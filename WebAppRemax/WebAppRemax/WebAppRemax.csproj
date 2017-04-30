@@ -217,6 +217,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelRemax.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Message.aspx" />
     <Content Include="ModelRemax.edmx.diagram">
       <DependentUpon>ModelRemax.edmx</DependentUpon>
     </Content>
@@ -479,6 +480,13 @@
     </Compile>
     <Compile Include="Languages.cs">
       <DependentUpon>ModelRemax.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Message.aspx.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Message.aspx.designer.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
     </Compile>
     <Compile Include="Messages.cs">
       <DependentUpon>ModelRemax.tt</DependentUpon>

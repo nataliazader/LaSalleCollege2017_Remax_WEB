@@ -16,6 +16,7 @@ namespace WebAppRemax
             string info="";
             if (!IsPostBack)
             {
+                lblHouses.Text = "";
                 dbRemax = new REntities();
                 foreach (ViewHouses house in dbRemax.ViewHouses)
                 {
